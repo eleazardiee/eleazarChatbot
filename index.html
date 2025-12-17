@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eleazar Tano | Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00f0ff;
+            --secondary: #7b2ff7;
+            --accent: #ff006e;
+            --dark: #0a0a0f;
+            --card: rgba(20, 20, 35, 0.6);
+            --text: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .bg-animation {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .orb1 {
+            width: 400px;
+            height: 400px;
+            background: var(--primary);
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .orb2 {
+            width: 500px;
+            height: 500px;
+            background: var(--secondary);
+            bottom: -150px;
+            right: -150px;
+            animation-delay: 7s;
+        }
+
+        .orb3 {
+            width: 350px;
+            height: 350px;
+            background: var(--accent);
+            top: 50%;
+            right: 10%;
+            animation-delay: 14s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(50px, -50px) scale(1.1); }
+            66% { transform: translate(-30px, 30px) scale(0.9); }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        nav {
+            padding: 2rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .profile-pic {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            border: 5px solid var(--primary);
+            box-shadow: 0 0 40px rgba(0, 240, 255, 0.5), 0 0 80px rgba(123, 47, 247, 0.3);
+            animation: fadeInScale 1s ease;
+            object-fit: cover;
+            position: relative;
+        }
+
+        .profile-pic::before {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            padding: 5px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: rotate 4s linear infinite;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes rotate {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero .subtitle {
+            font-size: 1.8rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .hero .tagline {
+            font-size: 1.1rem;
+            color: var(--text);
+            opacity: 0.7;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            animation: fadeInUp 1s ease 0.6s backwards;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--dark);
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 240, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--dark);
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        h2 {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-content {
+            background: var(--card);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 3rem;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .exp-card {
+            background: var(--card);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .exp-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .exp-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 240, 255, 0.2);
+        }
+
+        .exp-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .exp-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .exp-card .duration {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .exp-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .exp-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            opacity: 0.8;
+        }
+
+        .exp-card li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .contact-content {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--card);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            color: var(--primary);
+        }
+
+        .contact-item a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            fill: var(--primary);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.3rem;
+            }
+
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation">
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+        <div class="orb orb3"></div>
+    </div>
+
+    <div class="container">
+        <nav>
+            <div class="logo">ET</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <section class="hero">
+            <img src="images/eleazarpic.jpg" alt="Eleazar Tano" class="profile-pic">
+            <h1>Eleazar Tano</h1>
+            <div class="subtitle">Aspiring Software Developer</div>
+            <div class="tagline">Event & Media Professional | Building Digital Solutions</div>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                <a href="#experience" class="btn btn-secondary">View Experience</a>
+            </div>
+        </section>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>Born November 28, 2003, I am a motivated and adaptable individual with experience in both technical development and people-centered roles. I have worked in fast-paced environments such as BPO operations and live event productions, which strengthened my communication, coordination, and problem-solving skills.</p>
+                <br>
+                <p>Alongside this, I am passionate about building digital systems and technology-driven solutions that create real-world impact. My diverse background allows me to bridge the gap between technical innovation and user experience.</p>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Work Experience</h2>
+            <div class="experience-grid">
+                <div class="exp-card">
+                    <h3>BPO Agent</h3>
+                    <div class="duration">8 Months</div>
+                    <ul>
+                        <li>Handled customer interactions professionally and efficiently</li>
+                        <li>Developed strong communication, multitasking, and problem-resolution skills</li>
+                        <li>Worked under performance metrics and tight deadlines</li>
+                    </ul>
+                </div>
+
+                <div class="exp-card">
+                    <h3>Event Coordinator</h3>
+                    <ul>
+                        <li>Helped plan and execute events from preparation to completion</li>
+                        <li>Coordinated with teams, suppliers, and participants</li>
+                        <li>Ensured event flow, timing, and logistics were properly managed</li>
+                    </ul>
+                </div>
+
+                <div class="exp-card">
+                    <h3>Photobooth / Videobooth Staff</h3>
+                    <ul>
+                        <li>Assisted clients during events and ensured smooth booth operations</li>
+                        <li>Managed equipment setup, operation, and basic troubleshooting</li>
+                        <li>Delivered customer-focused service during high-volume events</li>
+                    </ul>
+                </div>
+
+                <div class="exp-card">
+                    <h3>Production Team Member</h3>
+                    <ul>
+                        <li>Supported event production operations</li>
+                        <li>Assisted with stage setup, equipment handling, and coordination</li>
+                        <li>Worked collaboratively with team members during live events</li>
+                    </ul>
+                </div>
+
+                <div class="exp-card">
+                    <h3>Live Coverage Moderator</h3>
+                    <ul>
+                        <li>Moderated live streams and event coverage</li>
+                        <li>Managed audience engagement and online interactions</li>
+                        <li>Ensured smooth communication between hosts and viewers</li>
+                    </ul>
+                </div>
+
+                <div class="exp-card">
+                    <h3>Sash Maker</h3>
+                    <ul>
+                        <li>Created customized sashes for events and special occasions</li>
+                        <li>Ensured quality control and timely delivery</li>
+                        <li>Worked closely with clients to meet design requirements</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Get In Touch</h2>
+            <div class="contact-content">
+                <p style="margin-bottom: 2rem;">I'm always open to new opportunities and collaborations. Feel free to reach out!</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                        <a href="mailto:eleazarvillasantano@gmail.com">eleazarvillasantano@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                        </svg>
+                        <a href="tel:09761229166">0976 122 9166</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Eleazar Tano. All rights reserved.</p>
+        </footer>
+    </div>
+
+<script type="module">
+    import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+    Chatbot.init({
+        chatflowid: "1bb07179-eb5e-4b39-aeac-c5914ec7f5e4",
+        apiHost: "https://cloud.flowiseai.com",
+        theme: {
+            button: {
+                backgroundColor: '#00f0ff',
+                right: 20,
+                bottom: 20,
+                size: 56,
+                dragAndDrop: true,
+                iconColor: '#0a0a0f',
+                customIconSrc: 'images/eleazarpic.jpg',
+                autoWindowOpen: {
+                    autoOpen: false,
+                    openDelay: 2,
+                    autoOpenOnMobile: false
+                }
+            },
+            tooltip: {
+                showTooltip: true,
+                tooltipMessage: 'Hi There 👋! Ask me anything',
+                tooltipBackgroundColor: '#0a0a0f',
+                tooltipTextColor: '#00f0ff',
+                tooltipFontSize: 16
+            },
+            disclaimer: {
+                title: 'Disclaimer',
+                message: "By using this chatbot, you agree to the <a target=\"_blank\" href=\"https://flowiseai.com/terms\">Terms & Condition</a>",
+                textColor: '#e0e0e0',
+                buttonColor: '#00f0ff',
+                buttonText: 'Start Chatting',
+                buttonTextColor: '#0a0a0f',
+                blurredBackgroundColor: 'rgba(10, 10, 15, 0.8)',
+                backgroundColor: '#1a1a2e'
+            },
+            chatWindow: {
+                showTitle: true,
+                showAgentMessages: true,
+                title: 'Eleazar\'s Assistant',
+                titleAvatarSrc: 'images/eleazarpic.jpg',
+                welcomeMessage: 'Hello! I\'m here to help you learn more about Eleazar. Feel free to ask me anything!',
+                errorMessage: 'Oops! Something went wrong. Please try again.',
+                backgroundColor: '#1a1a2e',
+                height: 600,
+                width: 400,
+                fontSize: 16,
+                starterPrompts: [
+                    "Tell me about Eleazar's experience",
+                    "What skills does Eleazar have?",
+                    "How can I contact Eleazar?"
+                ],
+                starterPromptFontSize: 14,
+                clearChatOnReload: false,
+                sourceDocsTitle: 'Sources:',
+                renderHTML: true,
+                botMessage: {
+                    backgroundColor: 'rgba(20, 20, 35, 0.8)',
+                    textColor: '#e0e0e0',
+                    showAvatar: true,
+                    avatarSrc: 'images/eleazarpic.jpg'
+                },
+                userMessage: {
+                    backgroundColor: '#00f0ff',
+                    textColor: '#0a0a0f',
+                    showAvatar: true,
+                    avatarSrc: 'https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/usericon.png'
+                },
+                textInput: {
+                    placeholder: 'Type your question...',
+                    backgroundColor: 'rgba(20, 20, 35, 0.8)',
+                    textColor: '#e0e0e0',
+                    sendButtonColor: '#00f0ff',
+                    maxChars: 500,
+                    maxCharsWarningMessage: 'You exceeded the character limit. Please keep it under 500 characters.',
+                    autoFocus: true,
+                    sendMessageSound: false,
+                    receiveMessageSound: false
+                },
+                feedback: {
+                    color: '#e0e0e0'
+                },
+                dateTimeToggle: {
+                    date: true,
+                    time: true
+                },
+                footer: {
+                    textColor: '#e0e0e0',
+                    text: 'Powered by',
+                    company: 'Flowise',
+                    companyLink: 'https://flowiseai.com'
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>
