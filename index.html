@@ -1,688 +1,727 @@
-{
-  "nodes": [
-    {
-      "id": "recursiveCharacterTextSplitter_0",
-      "position": {
-        "x": 586,
-        "y": 159
-      },
-      "type": "customNode",
-      "data": {
-        "id": "recursiveCharacterTextSplitter_0",
-        "label": "Recursive Character Text Splitter",
-        "version": 2,
-        "name": "recursiveCharacterTextSplitter",
-        "type": "RecursiveCharacterTextSplitter",
-        "baseClasses": [
-          "RecursiveCharacterTextSplitter",
-          "TextSplitter",
-          "BaseDocumentTransformer",
-          "Runnable"
-        ],
-        "category": "Text Splitters",
-        "description": "Split documents recursively by different characters - starting with \"\\n\\n\", then \"\\n\", then \" \"",
-        "inputParams": [
-          {
-            "label": "Chunk Size",
-            "name": "chunkSize",
-            "type": "number",
-            "description": "Number of characters in each chunk. Default is 1000.",
-            "default": 1000,
-            "optional": true,
-            "id": "recursiveCharacterTextSplitter_0-input-chunkSize-number",
-            "display": true
-          },
-          {
-            "label": "Chunk Overlap",
-            "name": "chunkOverlap",
-            "type": "number",
-            "description": "Number of characters to overlap between chunks. Default is 200.",
-            "default": 200,
-            "optional": true,
-            "id": "recursiveCharacterTextSplitter_0-input-chunkOverlap-number",
-            "display": true
-          },
-          {
-            "label": "Custom Separators",
-            "name": "separators",
-            "type": "string",
-            "rows": 4,
-            "description": "Array of custom separators to determine when to split the text, will override the default separators",
-            "placeholder": "[\"|\", \"##\", \">\", \"-\"]",
-            "additionalParams": true,
-            "optional": true,
-            "id": "recursiveCharacterTextSplitter_0-input-separators-string",
-            "display": true
-          }
-        ],
-        "inputAnchors": [],
-        "inputs": {
-          "chunkSize": 1000,
-          "chunkOverlap": 200,
-          "separators": ""
-        },
-        "outputAnchors": [
-          {
-            "id": "recursiveCharacterTextSplitter_0-output-recursiveCharacterTextSplitter-RecursiveCharacterTextSplitter|TextSplitter|BaseDocumentTransformer|Runnable",
-            "name": "recursiveCharacterTextSplitter",
-            "label": "RecursiveCharacterTextSplitter",
-            "description": "Split documents recursively by different characters - starting with \"\\n\\n\", then \"\\n\", then \" \"",
-            "type": "RecursiveCharacterTextSplitter | TextSplitter | BaseDocumentTransformer | Runnable"
-          }
-        ],
-        "outputs": {},
-        "selected": false
-      },
-      "width": 300,
-      "height": 435,
-      "positionAbsolute": {
-        "x": 586,
-        "y": 159
-      },
-      "selected": false
-    },
-    {
-      "id": "huggingFaceInferenceEmbeddings_0",
-      "position": {
-        "x": 1010.2542369095864,
-        "y": 373.79062749116815
-      },
-      "type": "customNode",
-      "data": {
-        "id": "huggingFaceInferenceEmbeddings_0",
-        "label": "HuggingFace Inference Embeddings",
-        "version": 1,
-        "name": "huggingFaceInferenceEmbeddings",
-        "type": "HuggingFaceInferenceEmbeddings",
-        "baseClasses": [
-          "HuggingFaceInferenceEmbeddings",
-          "Embeddings"
-        ],
-        "category": "Embeddings",
-        "description": "HuggingFace Inference API to generate embeddings for a given text",
-        "inputParams": [
-          {
-            "label": "Connect Credential",
-            "name": "credential",
-            "type": "credential",
-            "credentialNames": [
-              "huggingFaceApi"
-            ],
-            "id": "huggingFaceInferenceEmbeddings_0-input-credential-credential",
-            "display": true
-          },
-          {
-            "label": "Model",
-            "name": "modelName",
-            "type": "string",
-            "description": "If using own inference endpoint, leave this blank",
-            "placeholder": "sentence-transformers/distilbert-base-nli-mean-tokens",
-            "optional": true,
-            "id": "huggingFaceInferenceEmbeddings_0-input-modelName-string",
-            "display": true
-          },
-          {
-            "label": "Endpoint",
-            "name": "endpoint",
-            "type": "string",
-            "placeholder": "https://xyz.eu-west-1.aws.endpoints.huggingface.cloud/sentence-transformers/all-MiniLM-L6-v2",
-            "description": "Using your own inference endpoint",
-            "optional": true,
-            "id": "huggingFaceInferenceEmbeddings_0-input-endpoint-string",
-            "display": true
-          }
-        ],
-        "inputAnchors": [],
-        "inputs": {
-          "modelName": "",
-          "endpoint": ""
-        },
-        "outputAnchors": [
-          {
-            "id": "huggingFaceInferenceEmbeddings_0-output-huggingFaceInferenceEmbeddings-HuggingFaceInferenceEmbeddings|Embeddings",
-            "name": "huggingFaceInferenceEmbeddings",
-            "label": "HuggingFaceInferenceEmbeddings",
-            "description": "HuggingFace Inference API to generate embeddings for a given text",
-            "type": "HuggingFaceInferenceEmbeddings | Embeddings"
-          }
-        ],
-        "outputs": {},
-        "selected": false
-      },
-      "width": 300,
-      "height": 478,
-      "selected": false,
-      "positionAbsolute": {
-        "x": 1010.2542369095864,
-        "y": 373.79062749116815
-      },
-      "dragging": false
-    },
-    {
-      "id": "chatHuggingFace_0",
-      "position": {
-        "x": 1403.8116613066243,
-        "y": 349.2566610327741
-      },
-      "type": "customNode",
-      "data": {
-        "id": "chatHuggingFace_0",
-        "label": "ChatHuggingFace",
-        "version": 3,
-        "name": "chatHuggingFace",
-        "type": "ChatHuggingFace",
-        "baseClasses": [
-          "ChatHuggingFace",
-          "BaseChatModel",
-          "LLM",
-          "BaseLLM",
-          "BaseLanguageModel",
-          "Runnable"
-        ],
-        "category": "Chat Models",
-        "description": "Wrapper around HuggingFace large language models",
-        "inputParams": [
-          {
-            "label": "Connect Credential",
-            "name": "credential",
-            "type": "credential",
-            "credentialNames": [
-              "huggingFaceApi"
-            ],
-            "id": "chatHuggingFace_0-input-credential-credential",
-            "display": true
-          },
-          {
-            "label": "Model",
-            "name": "model",
-            "type": "string",
-            "description": "Model name (e.g., deepseek-ai/DeepSeek-V3.2-Exp:novita). If model includes provider (:) or using router endpoint, leave Endpoint blank.",
-            "placeholder": "deepseek-ai/DeepSeek-V3.2-Exp:novita",
-            "id": "chatHuggingFace_0-input-model-string",
-            "display": true
-          },
-          {
-            "label": "Endpoint",
-            "name": "endpoint",
-            "type": "string",
-            "placeholder": "https://xyz.eu-west-1.aws.endpoints.huggingface.cloud/gpt2",
-            "description": "Custom inference endpoint (optional). Not needed for models with providers (:) or router endpoints. Leave blank to use Inference Providers.",
-            "optional": true,
-            "id": "chatHuggingFace_0-input-endpoint-string",
-            "display": true
-          },
-          {
-            "label": "Temperature",
-            "name": "temperature",
-            "type": "number",
-            "step": 0.1,
-            "description": "Temperature parameter may not apply to certain model. Please check available model parameters",
-            "optional": true,
-            "additionalParams": true,
-            "id": "chatHuggingFace_0-input-temperature-number",
-            "display": true
-          },
-          {
-            "label": "Max Tokens",
-            "name": "maxTokens",
-            "type": "number",
-            "step": 1,
-            "description": "Max Tokens parameter may not apply to certain model. Please check available model parameters",
-            "optional": true,
-            "additionalParams": true,
-            "id": "chatHuggingFace_0-input-maxTokens-number",
-            "display": true
-          },
-          {
-            "label": "Top Probability",
-            "name": "topP",
-            "type": "number",
-            "step": 0.1,
-            "description": "Top Probability parameter may not apply to certain model. Please check available model parameters",
-            "optional": true,
-            "additionalParams": true,
-            "id": "chatHuggingFace_0-input-topP-number",
-            "display": true
-          },
-          {
-            "label": "Top K",
-            "name": "hfTopK",
-            "type": "number",
-            "step": 0.1,
-            "description": "Top K parameter may not apply to certain model. Please check available model parameters",
-            "optional": true,
-            "additionalParams": true,
-            "id": "chatHuggingFace_0-input-hfTopK-number",
-            "display": true
-          },
-          {
-            "label": "Frequency Penalty",
-            "name": "frequencyPenalty",
-            "type": "number",
-            "step": 0.1,
-            "description": "Frequency Penalty parameter may not apply to certain model. Please check available model parameters",
-            "optional": true,
-            "additionalParams": true,
-            "id": "chatHuggingFace_0-input-frequencyPenalty-number",
-            "display": true
-          },
-          {
-            "label": "Stop Sequence",
-            "name": "stop",
-            "type": "string",
-            "rows": 4,
-            "placeholder": "AI assistant:",
-            "description": "Sets the stop sequences to use. Use comma to separate different sequences.",
-            "optional": true,
-            "additionalParams": true,
-            "id": "chatHuggingFace_0-input-stop-string",
-            "display": true
-          }
-        ],
-        "inputAnchors": [
-          {
-            "label": "Cache",
-            "name": "cache",
-            "type": "BaseCache",
-            "optional": true,
-            "id": "chatHuggingFace_0-input-cache-BaseCache",
-            "display": true
-          }
-        ],
-        "inputs": {
-          "cache": "",
-          "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B",
-          "endpoint": "",
-          "temperature": "",
-          "maxTokens": "",
-          "topP": "",
-          "hfTopK": "",
-          "frequencyPenalty": "",
-          "stop": ""
-        },
-        "outputAnchors": [
-          {
-            "id": "chatHuggingFace_0-output-chatHuggingFace-ChatHuggingFace|BaseChatModel|LLM|BaseLLM|BaseLanguageModel|Runnable",
-            "name": "chatHuggingFace",
-            "label": "ChatHuggingFace",
-            "description": "Wrapper around HuggingFace large language models",
-            "type": "ChatHuggingFace | BaseChatModel | LLM | BaseLLM | BaseLanguageModel | Runnable"
-          }
-        ],
-        "outputs": {},
-        "selected": false
-      },
-      "width": 300,
-      "height": 581,
-      "selected": false,
-      "positionAbsolute": {
-        "x": 1403.8116613066243,
-        "y": 349.2566610327741
-      },
-      "dragging": false
-    },
-    {
-      "id": "docxFile_0",
-      "position": {
-        "x": 1010.7745656584223,
-        "y": -115.16956124984995
-      },
-      "type": "customNode",
-      "data": {
-        "id": "docxFile_0",
-        "label": "Docx File",
-        "version": 2,
-        "name": "docxFile",
-        "type": "Document",
-        "baseClasses": [
-          "Document"
-        ],
-        "category": "Document Loaders",
-        "description": "Load data from DOCX files",
-        "inputParams": [
-          {
-            "label": "Docx File",
-            "name": "docxFile",
-            "type": "file",
-            "fileType": ".docx",
-            "id": "docxFile_0-input-docxFile-file",
-            "display": true
-          },
-          {
-            "label": "Additional Metadata",
-            "name": "metadata",
-            "type": "json",
-            "description": "Additional metadata to be added to the extracted documents",
-            "optional": true,
-            "additionalParams": true,
-            "id": "docxFile_0-input-metadata-json",
-            "display": true
-          },
-          {
-            "label": "Omit Metadata Keys",
-            "name": "omitMetadataKeys",
-            "type": "string",
-            "rows": 4,
-            "description": "Each document loader comes with a default set of metadata keys that are extracted from the document. You can use this field to omit some of the default metadata keys. The value should be a list of keys, seperated by comma. Use * to omit all metadata keys execept the ones you specify in the Additional Metadata field",
-            "placeholder": "key1, key2, key3.nestedKey1",
-            "optional": true,
-            "additionalParams": true,
-            "id": "docxFile_0-input-omitMetadataKeys-string",
-            "display": true
-          }
-        ],
-        "inputAnchors": [
-          {
-            "label": "Text Splitter",
-            "name": "textSplitter",
-            "type": "TextSplitter",
-            "optional": true,
-            "id": "docxFile_0-input-textSplitter-TextSplitter",
-            "display": true
-          }
-        ],
-        "inputs": {
-          "textSplitter": "{{recursiveCharacterTextSplitter_0.data.instance}}",
-          "metadata": "",
-          "omitMetadataKeys": ""
-        },
-        "outputAnchors": [
-          {
-            "name": "output",
-            "label": "Output",
-            "type": "options",
-            "description": "Array of document objects containing metadata and pageContent",
-            "options": [
-              {
-                "id": "docxFile_0-output-document-Document|json",
-                "name": "document",
-                "label": "Document",
-                "description": "Array of document objects containing metadata and pageContent",
-                "type": "Document | json"
-              },
-              {
-                "id": "docxFile_0-output-text-string|json",
-                "name": "text",
-                "label": "Text",
-                "description": "Concatenated string from pageContent of documents",
-                "type": "string | json"
-              }
-            ],
-            "default": "document"
-          }
-        ],
-        "outputs": {
-          "output": "document"
-        },
-        "selected": false
-      },
-      "width": 300,
-      "height": 444,
-      "selected": false,
-      "positionAbsolute": {
-        "x": 1010.7745656584223,
-        "y": -115.16956124984995
-      },
-      "dragging": false
-    },
-    {
-      "id": "memoryVectorStore_0",
-      "position": {
-        "x": 1397.2924681168852,
-        "y": -162.60272802260388
-      },
-      "type": "customNode",
-      "data": {
-        "id": "memoryVectorStore_0",
-        "label": "In-Memory Vector Store",
-        "version": 1,
-        "name": "memoryVectorStore",
-        "type": "Memory",
-        "baseClasses": [
-          "Memory",
-          "VectorStoreRetriever",
-          "BaseRetriever"
-        ],
-        "category": "Vector Stores",
-        "description": "In-memory vectorstore that stores embeddings and does an exact, linear search for the most similar embeddings.",
-        "inputParams": [
-          {
-            "label": "Top K",
-            "name": "topK",
-            "description": "Number of top results to fetch. Default to 4",
-            "placeholder": "4",
-            "type": "number",
-            "optional": true,
-            "id": "memoryVectorStore_0-input-topK-number",
-            "display": true
-          }
-        ],
-        "inputAnchors": [
-          {
-            "label": "Document",
-            "name": "document",
-            "type": "Document",
-            "list": true,
-            "optional": true,
-            "id": "memoryVectorStore_0-input-document-Document",
-            "display": true
-          },
-          {
-            "label": "Embeddings",
-            "name": "embeddings",
-            "type": "Embeddings",
-            "id": "memoryVectorStore_0-input-embeddings-Embeddings",
-            "display": true
-          }
-        ],
-        "inputs": {
-          "document": [
-            "{{docxFile_0.data.instance}}"
-          ],
-          "embeddings": "{{huggingFaceInferenceEmbeddings_0.data.instance}}",
-          "topK": ""
-        },
-        "outputAnchors": [
-          {
-            "name": "output",
-            "label": "Output",
-            "type": "options",
-            "description": "",
-            "options": [
-              {
-                "id": "memoryVectorStore_0-output-retriever-Memory|VectorStoreRetriever|BaseRetriever",
-                "name": "retriever",
-                "label": "Memory Retriever",
-                "description": "",
-                "type": "Memory | VectorStoreRetriever | BaseRetriever"
-              },
-              {
-                "id": "memoryVectorStore_0-output-vectorStore-Memory|VectorStore",
-                "name": "vectorStore",
-                "label": "Memory Vector Store",
-                "description": "",
-                "type": "Memory | VectorStore"
-              }
-            ],
-            "default": "retriever"
-          }
-        ],
-        "outputs": {
-          "output": "retriever"
-        },
-        "selected": false
-      },
-      "width": 300,
-      "height": 411,
-      "selected": false,
-      "positionAbsolute": {
-        "x": 1397.2924681168852,
-        "y": -162.60272802260388
-      },
-      "dragging": false
-    },
-    {
-      "id": "conversationalRetrievalQAChain_0",
-      "position": {
-        "x": 1883.9430208615254,
-        "y": 104.1972719773963
-      },
-      "type": "customNode",
-      "data": {
-        "id": "conversationalRetrievalQAChain_0",
-        "label": "Conversational Retrieval QA Chain",
-        "version": 3,
-        "name": "conversationalRetrievalQAChain",
-        "type": "ConversationalRetrievalQAChain",
-        "baseClasses": [
-          "ConversationalRetrievalQAChain",
-          "BaseChain",
-          "Runnable"
-        ],
-        "category": "Chains",
-        "description": "Document QA - built on RetrievalQAChain to provide a chat history component",
-        "inputParams": [
-          {
-            "label": "Return Source Documents",
-            "name": "returnSourceDocuments",
-            "type": "boolean",
-            "optional": true,
-            "id": "conversationalRetrievalQAChain_0-input-returnSourceDocuments-boolean",
-            "display": true
-          },
-          {
-            "label": "Rephrase Prompt",
-            "name": "rephrasePrompt",
-            "type": "string",
-            "description": "Using previous chat history, rephrase question into a standalone question",
-            "warning": "Prompt must include input variables: {chat_history} and {question}",
-            "rows": 4,
-            "additionalParams": true,
-            "optional": true,
-            "default": "Given the following conversation and a follow up question, rephrase the follow up question to be a standalone question.\n\nChat History:\n{chat_history}\nFollow Up Input: {question}\nStandalone Question:",
-            "id": "conversationalRetrievalQAChain_0-input-rephrasePrompt-string",
-            "display": true
-          },
-          {
-            "label": "Response Prompt",
-            "name": "responsePrompt",
-            "type": "string",
-            "description": "Taking the rephrased question, search for answer from the provided context",
-            "warning": "Prompt must include input variable: {context}",
-            "rows": 4,
-            "additionalParams": true,
-            "optional": true,
-            "default": "I want you to act as a document that I am having a conversation with. Your name is \"AI Assistant\". Using the provided context, answer the user's question to the best of your ability using the resources provided.\nIf there is nothing in the context relevant to the question at hand, just say \"Hmm, I'm not sure\" and stop after that. Refuse to answer any question not about the info. Never break character.\n------------\n{context}\n------------\nREMEMBER: If there is no relevant information within the context, just say \"Hmm, I'm not sure\". Don't try to make up an answer. Never break character.",
-            "id": "conversationalRetrievalQAChain_0-input-responsePrompt-string",
-            "display": true
-          }
-        ],
-        "inputAnchors": [
-          {
-            "label": "Chat Model",
-            "name": "model",
-            "type": "BaseChatModel",
-            "id": "conversationalRetrievalQAChain_0-input-model-BaseChatModel",
-            "display": true
-          },
-          {
-            "label": "Vector Store Retriever",
-            "name": "vectorStoreRetriever",
-            "type": "BaseRetriever",
-            "id": "conversationalRetrievalQAChain_0-input-vectorStoreRetriever-BaseRetriever",
-            "display": true
-          },
-          {
-            "label": "Memory",
-            "name": "memory",
-            "type": "BaseMemory",
-            "optional": true,
-            "description": "If left empty, a default BufferMemory will be used",
-            "id": "conversationalRetrievalQAChain_0-input-memory-BaseMemory",
-            "display": true
-          },
-          {
-            "label": "Input Moderation",
-            "description": "Detect text that could generate harmful output and prevent it from being sent to the language model",
-            "name": "inputModeration",
-            "type": "Moderation",
-            "optional": true,
-            "list": true,
-            "id": "conversationalRetrievalQAChain_0-input-inputModeration-Moderation",
-            "display": true
-          }
-        ],
-        "inputs": {
-          "model": "{{chatHuggingFace_0.data.instance}}",
-          "vectorStoreRetriever": "{{memoryVectorStore_0.data.instance}}",
-          "memory": "",
-          "returnSourceDocuments": false,
-          "rephrasePrompt": "Given the following conversation and a follow up question, rephrase the follow up question to be a standalone question.\n\nChat History:\n{chat_history}\nFollow Up Input: {question}\nStandalone Question:",
-          "responsePrompt": "I want you to act as a document that I am having a conversation with. Your name is \"AI Assistant\". Using the provided context, answer the user's question to the best of your ability using the resources provided.\nIf there is nothing in the context relevant to the question at hand, just say \"Hmm, I'm not sure\" and stop after that. Refuse to answer any question not about the info. Never break character.\n------------\n{context}\n------------\nREMEMBER: If there is no relevant information within the context, just say \"Hmm, I'm not sure\". Don't try to make up an answer. Never break character.",
-          "inputModeration": ""
-        },
-        "outputAnchors": [
-          {
-            "id": "conversationalRetrievalQAChain_0-output-conversationalRetrievalQAChain-ConversationalRetrievalQAChain|BaseChain|Runnable",
-            "name": "conversationalRetrievalQAChain",
-            "label": "ConversationalRetrievalQAChain",
-            "description": "Document QA - built on RetrievalQAChain to provide a chat history component",
-            "type": "ConversationalRetrievalQAChain | BaseChain | Runnable"
-          }
-        ],
-        "outputs": {},
-        "selected": false
-      },
-      "width": 300,
-      "height": 536,
-      "selected": false,
-      "dragging": false,
-      "positionAbsolute": {
-        "x": 1883.9430208615254,
-        "y": 104.1972719773963
-      }
-    }
-  ],
-  "edges": [
-    {
-      "source": "recursiveCharacterTextSplitter_0",
-      "sourceHandle": "recursiveCharacterTextSplitter_0-output-recursiveCharacterTextSplitter-RecursiveCharacterTextSplitter|TextSplitter|BaseDocumentTransformer|Runnable",
-      "target": "docxFile_0",
-      "targetHandle": "docxFile_0-input-textSplitter-TextSplitter",
-      "type": "buttonedge",
-      "id": "recursiveCharacterTextSplitter_0-recursiveCharacterTextSplitter_0-output-recursiveCharacterTextSplitter-RecursiveCharacterTextSplitter|TextSplitter|BaseDocumentTransformer|Runnable-docxFile_0-docxFile_0-input-textSplitter-TextSplitter"
-    },
-    {
-      "source": "docxFile_0",
-      "sourceHandle": "docxFile_0-output-document-Document|json",
-      "target": "memoryVectorStore_0",
-      "targetHandle": "memoryVectorStore_0-input-document-Document",
-      "type": "buttonedge",
-      "id": "docxFile_0-docxFile_0-output-document-Document|json-memoryVectorStore_0-memoryVectorStore_0-input-document-Document"
-    },
-    {
-      "source": "huggingFaceInferenceEmbeddings_0",
-      "sourceHandle": "huggingFaceInferenceEmbeddings_0-output-huggingFaceInferenceEmbeddings-HuggingFaceInferenceEmbeddings|Embeddings",
-      "target": "memoryVectorStore_0",
-      "targetHandle": "memoryVectorStore_0-input-embeddings-Embeddings",
-      "type": "buttonedge",
-      "id": "huggingFaceInferenceEmbeddings_0-huggingFaceInferenceEmbeddings_0-output-huggingFaceInferenceEmbeddings-HuggingFaceInferenceEmbeddings|Embeddings-memoryVectorStore_0-memoryVectorStore_0-input-embeddings-Embeddings"
-    },
-    {
-      "source": "memoryVectorStore_0",
-      "sourceHandle": "memoryVectorStore_0-output-retriever-Memory|VectorStoreRetriever|BaseRetriever",
-      "target": "conversationalRetrievalQAChain_0",
-      "targetHandle": "conversationalRetrievalQAChain_0-input-vectorStoreRetriever-BaseRetriever",
-      "type": "buttonedge",
-      "id": "memoryVectorStore_0-memoryVectorStore_0-output-retriever-Memory|VectorStoreRetriever|BaseRetriever-conversationalRetrievalQAChain_0-conversationalRetrievalQAChain_0-input-vectorStoreRetriever-BaseRetriever"
-    },
-    {
-      "source": "chatHuggingFace_0",
-      "sourceHandle": "chatHuggingFace_0-output-chatHuggingFace-ChatHuggingFace|BaseChatModel|LLM|BaseLLM|BaseLanguageModel|Runnable",
-      "target": "conversationalRetrievalQAChain_0",
-      "targetHandle": "conversationalRetrievalQAChain_0-input-model-BaseChatModel",
-      "type": "buttonedge",
-      "id": "chatHuggingFace_0-chatHuggingFace_0-output-chatHuggingFace-ChatHuggingFace|BaseChatModel|LLM|BaseLLM|BaseLanguageModel|Runnable-conversationalRetrievalQAChain_0-conversationalRetrievalQAChain_0-input-model-BaseChatModel"
-    }
-  ]
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eleazar Tano | Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .skill-card {
+            background: var(--card);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+            font-weight: 600;
+            color: var(--text);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .skill-card span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 240, 255, 0.3);
+        }
+
+        .skill-card:hover::before {
+            opacity: 0.15;
+        }
+
+
+        :root {
+            --primary: #00f0ff;
+            --secondary: #7b2ff7;
+            --accent: #ff006e;
+            --dark: #0a0a0f;
+            --card: rgba(20, 20, 35, 0.6);
+            --text: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .bg-animation {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .orb1 {
+            width: 400px;
+            height: 400px;
+            background: var(--primary);
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .orb2 {
+            width: 500px;
+            height: 500px;
+            background: var(--secondary);
+            bottom: -150px;
+            right: -150px;
+            animation-delay: 7s;
+        }
+
+        .orb3 {
+            width: 350px;
+            height: 350px;
+            background: var(--accent);
+            top: 50%;
+            right: 10%;
+            animation-delay: 14s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(50px, -50px) scale(1.1); }
+            66% { transform: translate(-30px, 30px) scale(0.9); }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        nav {
+            padding: 2rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .profile-pic {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            border: 5px solid var(--primary);
+            box-shadow: 0 0 40px rgba(0, 240, 255, 0.5), 0 0 80px rgba(123, 47, 247, 0.3);
+            animation: fadeInScale 1s ease;
+            object-fit: cover;
+            position: relative;
+        }
+
+        .profile-pic::before {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            padding: 5px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: rotate 4s linear infinite;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes rotate {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero .subtitle {
+            font-size: 1.8rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .hero .tagline {
+            font-size: 1.1rem;
+            color: var(--text);
+            opacity: 0.7;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            animation: fadeInUp 1s ease 0.6s backwards;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--dark);
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 240, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--dark);
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        h2 {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-content {
+            background: var(--card);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 3rem;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .exp-card {
+            background: var(--card);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .exp-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .exp-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 240, 255, 0.2);
+        }
+
+        .exp-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .exp-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .exp-card .duration {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .exp-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .exp-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            opacity: 0.8;
+        }
+
+        .exp-card li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .contact-content {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--card);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            color: var(--primary);
+        }
+
+        .contact-item a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            fill: var(--primary);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.3rem;
+            }
+
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation">
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+        <div class="orb orb3"></div>
+    </div>
+
+    <div class="container">
+        <nav>
+            <div class="logo">ET</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+        </nav>
+
+        <section class="hero">
+            <img src="eleazarpic.jpg" alt="Eleazar Tano" class="profile-pic">
+            <h1>Eleazar Tano</h1>
+            <div class="subtitle">Aspiring Software Developer</div>
+            <div class="tagline">Event & Media Professional | Building Digital Solutions</div>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                <a href="#experience" class="btn btn-secondary">View Experience</a>
+            </div>
+        </section>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>Born November 28, 2003, I am a motivated and adaptable individual with experience in both technical development and people-centered roles. I have worked in fast-paced environments such as BPO operations and live event productions, which strengthened my communication, coordination, and problem-solving skills.</p>
+                <br>
+                <p>Alongside this, I am passionate about building digital systems and technology-driven solutions that create real-world impact. My diverse background allows me to bridge the gap between technical innovation and user experience.</p>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Skills & Technologies</h2>
+            <div class="skills-grid">
+                <div class="skill-card"><span>CSS</span></div>
+                <div class="skill-card"><span>Java</span></div>
+                <div class="skill-card"><span>.NET</span></div>
+                <div class="skill-card"><span>C</span></div>
+                <div class="skill-card"><span>C#</span></div>
+                <div class="skill-card"><span>PHP</span></div>
+                <div class="skill-card"><span>Python</span></div>
+                <div class="skill-card"><span>Tailwind CSS</span></div>
+                <div class="skill-card"><span>Bootstrap</span></div>
+                <div class="skill-card"><span>SQL</span></div>
+            </div>
+        </section>
+
+
+        <section id="experience">
+            <h2>Work Experience</h2>
+            <div class="experience-grid">
+                <div class="exp-card">
+                    <h3>BPO Agent</h3>
+                    <div class="duration">8 Months</div>
+                    <ul>
+                        <li>Handled customer interactions professionally and efficiently</li>
+                        <li>Developed strong communication, multitasking, and problem-resolution skills</li>
+                        <li>Worked under performance metrics and tight deadlines</li>
+                    </ul>
+                </div>
+
+                <div class="exp-card">
+                    <h3>Event Coordinator</h3>
+                    <ul>
+                        <li>Helped plan and execute events from preparation to completion</li>
+                        <li>Coordinated with teams, suppliers, and participants</li>
+                        <li>Ensured event flow, timing, and logistics were properly managed</li>
+                    </ul>
+                </div>
+
+                <div class="exp-card">
+                    <h3>Photobooth / Videobooth Staff</h3>
+                    <ul>
+                        <li>Assisted clients during events and ensured smooth booth operations</li>
+                        <li>Managed equipment setup, operation, and basic troubleshooting</li>
+                        <li>Delivered customer-focused service during high-volume events</li>
+                    </ul>
+                </div>
+
+                <div class="exp-card">
+                    <h3>Production Team Member</h3>
+                    <ul>
+                        <li>Supported event production operations</li>
+                        <li>Assisted with stage setup, equipment handling, and coordination</li>
+                        <li>Worked collaboratively with team members during live events</li>
+                    </ul>
+                </div>
+
+                <div class="exp-card">
+                    <h3>Live Coverage Moderator</h3>
+                    <ul>
+                        <li>Moderated live streams and event coverage</li>
+                        <li>Managed audience engagement and online interactions</li>
+                        <li>Ensured smooth communication between hosts and viewers</li>
+                    </ul>
+                </div>
+
+                <div class="exp-card">
+                    <h3>Sash Maker</h3>
+                    <ul>
+                        <li>Created customized sashes for events and special occasions</li>
+                        <li>Ensured quality control and timely delivery</li>
+                        <li>Worked closely with clients to meet design requirements</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Get In Touch</h2>
+            <div class="contact-content">
+                <p style="margin-bottom: 2rem;">I'm always open to new opportunities and collaborations. Feel free to reach out!</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                        <a href="mailto:eleazarvillasantano@gmail.com">eleazarvillasantano@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                        </svg>
+                        <a href="tel:09761229166">0976 122 9166</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Eleazar Tano. All rights reserved.</p>
+        </footer>
+    </div>
+
+<script type="module">
+    import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+    Chatbot.init({
+        chatflowid: "1bb07179-eb5e-4b39-aeac-c5914ec7f5e4",
+        apiHost: "https://cloud.flowiseai.com",
+        theme: {
+            button: {
+                backgroundColor: '#00f0ff',
+                right: 20,
+                bottom: 20,
+                size: 56,
+                dragAndDrop: true,
+                iconColor: '#0a0a0f',
+                customIconSrc: 'eleazarpic.jpg',
+                autoWindowOpen: {
+                    autoOpen: false,
+                    openDelay: 2,
+                    autoOpenOnMobile: false
+                }
+            },
+            tooltip: {
+                showTooltip: true,
+                tooltipMessage: 'Hi There 👋! Ask me anything',
+                tooltipBackgroundColor: '#0a0a0f',
+                tooltipTextColor: '#00f0ff',
+                tooltipFontSize: 16
+            },
+            disclaimer: {
+                title: 'Disclaimer',
+                message: "By using this chatbot, you agree to the <a target=\"_blank\" href=\"https://flowiseai.com/terms\">Terms & Condition</a>",
+                textColor: '#e0e0e0',
+                buttonColor: '#00f0ff',
+                buttonText: 'Start Chatting',
+                buttonTextColor: '#0a0a0f',
+                blurredBackgroundColor: 'rgba(10, 10, 15, 0.8)',
+                backgroundColor: '#1a1a2e'
+            },
+            chatWindow: {
+                showTitle: true,
+                showAgentMessages: true,
+                title: 'Eleazar\'s Assistant',
+                titleAvatarSrc: 'eleazarpic.jpg',
+                welcomeMessage: 'Hello! I\'m here to help you learn more about Eleazar. Feel free to ask me anything!',
+                errorMessage: 'Oops! Something went wrong. Please try again.',
+                backgroundColor: '#1a1a2e',
+                height: 600,
+                width: 400,
+                fontSize: 16,
+                starterPrompts: [
+                    "Tell me about Eleazar's experience",
+                    "What skills does Eleazar have?",
+                    "How can I contact Eleazar?"
+                ],
+                starterPromptFontSize: 14,
+                clearChatOnReload: false,
+                sourceDocsTitle: 'Sources:',
+                renderHTML: true,
+                botMessage: {
+                    backgroundColor: 'rgba(20, 20, 35, 0.8)',
+                    textColor: '#e0e0e0',
+                    showAvatar: true,
+                    avatarSrc: 'eleazarpic.jpg'
+                },
+                userMessage: {
+                    backgroundColor: '#00f0ff',
+                    textColor: '#0a0a0f',
+                    showAvatar: true,
+                    avatarSrc: 'https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/usericon.png'
+                },
+                textInput: {
+                    placeholder: 'Type your question...',
+                    backgroundColor: 'rgba(20, 20, 35, 0.8)',
+                    textColor: '#e0e0e0',
+                    sendButtonColor: '#00f0ff',
+                    maxChars: 500,
+                    maxCharsWarningMessage: 'You exceeded the character limit. Please keep it under 500 characters.',
+                    autoFocus: true,
+                    sendMessageSound: false,
+                    receiveMessageSound: false
+                },
+                feedback: {
+                    color: '#e0e0e0'
+                },
+                dateTimeToggle: {
+                    date: true,
+                    time: true
+                },
+                footer: {
+                    textColor: '#e0e0e0',
+                    text: 'Powered by',
+                    company: 'Flowise',
+                    companyLink: 'https://flowiseai.com'
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>
